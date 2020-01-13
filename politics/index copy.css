@@ -1,0 +1,198 @@
+h1 {
+  font-family: brandon-grotesque, sans-serif;
+  font-weight: inherit;
+  font-style: inherit;
+}
+
+h2 {
+  font-family: brandon-grotesque, sans-serif;
+  font-weight: inherit;
+  font-style: inherit;
+}
+
+h3 {
+  font-family: brandon-grotesque, sans-serif;
+  font-weight: inherit;
+  font-style: inherit;
+}
+
+h4 {
+  font-family: brandon-grotesque, sans-serif;
+  font-weight: inherit;
+  font-style: inherit;
+}
+
+h5 {
+  font-family: brandon-grotesque, sans-serif;
+  font-weight: in;
+  font-style: inherit;
+}
+
+p {
+  font-family: brandon-grotesque, sans-serif;
+  font-weight: inherit;
+  font-style: inherit;
+}
+
+a {
+  text-decoration: inherit;
+  color: black;
+}
+
+.center {
+  display: center;
+  margin-left: auto;
+  margin-right: center;
+  box-align: center;
+}
+
+text {
+  font-family: brandon-grotesque, sans-serif;
+}
+
+body {
+  font: 15px sans-serif;
+  font-weight: inherit;
+}
+
+.axis path, .axis line {
+  fill: none;
+  stroke: black;
+}
+
+.x.axis path {
+  display: ruby-base-container;
+}
+
+.y.axis path {
+  stroke: black;
+}
+
+.line {
+  fill: none;
+  stroke-width: 3px;
+  stroke-linecap: round;
+}
+
+.rect {
+  fill: inherit;
+  stroke-width: 1;
+}
+
+.header {
+  margin-top: 60px;
+  text-align: inherit;
+  font-family: brandon-grotesque, sans-serif;
+  font-weight: inherit;
+}
+
+.dotButtons {
+  font-family: brandon-grotesque, sans-serif;
+  font-weight: 500;
+}
+
+input {
+  margin-right: 10px;
+  font-family: brandon-grotesque, sans-serif;
+  font-weight: 500;
+  font-size: 10;
+}
+
+.form-check-label {
+  font-size: 0.8em;
+  margin-right: 20px;
+}
+
+.radio-toolbar {
+  margin: 10px;
+}
+
+.radio-toolbar input[type="radio"] {
+  opacity: 0;
+  position: fixed;
+  width: 0;
+}
+
+.radio-toolbar label {
+  display: inline-block;
+  background-color: none;
+  padding: 5px 5px;
+  font-family: brandon-grotesque, sans-serif;
+  font-size: 16px;
+  border: black;
+}
+
+.radio-toolbar label:hover {
+  background-color: rgb(184, 184, 184);
+}
+
+.radio-toolbar input[type="radio"]:checked+label {
+  background-color: rgb(204, 204, 204);
+  stroke: rgb(0, 0, 0);
+  stroke-width: 1px;
+}
+
+div.tooltip {
+  position: absolute;
+  text-align: center;
+  width: 100px;
+  height: 100px;
+  padding: 2px;
+  font-family: brandon-grotesque, sans-serif;
+  font-weight: 700;
+  background: white;
+  stroke-width: 1;
+  stroke: black;
+  border-radius: 8px;
+  pointer-events: none;
+}
+
+.d3-tip {
+  line-height: 1;
+  font-family: brandon-grotesque, sans-serif;
+  padding: 0px;
+  background: white;
+  border-radius: 8px;
+  border-color: black;
+  border-width: 1px;
+  border: black;
+  font-size: 12px;
+  stroke-width: 2px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Create two equal columns that floats next to each other */
+
+.column {
+  float: left;
+  padding: 10px;
+}
+
+/* Clear floats after the columns */
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@media only screen and (max-width:850px) {
+  .computer {
+    display: none;
+  }
+  .phone {
+    display: inline;
+  }
+}
+
+@media only screen and (min-width:851px) {
+  .computer {
+    display: inline;
+  }
+  .phone {
+    display: none;
+  }
+}
