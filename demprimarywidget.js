@@ -1,134 +1,128 @@
-var winscale = d3.scaleLinear()
-  .domain([0, 50,100])
-  .range(["white", "#0091FF", "#002E66"]);
-var delscale = d3.scaleLinear()
-  .domain([0, 1990])
-  .range(["white", "#002E66"]);  
+
+
+var margin2 = { top: 0, right: 70, bottom: 0, left: 50 }
+var width2 = 860 - margin2.left - margin2.right
+var height2 = 445
+var axisPad = 12
+var R =7
 
 
 
-d3.csv("https://raw.githubusercontent.com/jhkersting/jhkforecasts/master/democratic_primary/topline.csv", function (error, data) {
+var cands = ["Biden", "Bloomberg", "Booker", "Buttigieg", "Klobuchar", "Sanders", "Steyer", "Warren", "Yang"]
+// since Category B and E are really close to each other, assign them diverging colors
+var color = d3.scaleOrdinal()
+  .domain(cands)
+  .range(["#00FF90", "#00B050", "#006541", "#98d2f8", "#0077FF", "#002E66", "#E7B5FF", "#B722FF", "purple"])
+var colortwo = d3.scaleOrdinal()
+  .domain(cands)
+  .range(["black", "white", "white", "black", "white", "white", "black", "white", "white"])
 
-  
+
+var div = d3.select("#bubblemap").append("div")
+  .attr("class", "tooltip")
+  .style("opacity", 0);
+
+d3.csv("https://raw.githubusercontent.com/jhkersting/jhkforecasts/master/democratic_primary/bubblemap.csv", function (error, data) {
 
 
-  var svg = d3.select("#demprim").append("svg")
-    .attr("viewBox", "0 0 500 430")
+
+
+
+
+  var x = d3.scaleLinear()
+    .domain([0, 780])
+    .range([0, width2])
+
+
+
+  var y = d3.scaleLinear()
+    .domain([0, 445])
+    .range([0, height2]);
+
+
+
+  var svg = d3.select("#bubblemap").append("svg")
+    .attr("viewBox", '0 0 860 445')
     .append('g')
+    .attr("transform", "translate(" + margin2.left + "," + margin2.top + ")");
+
+  var tool_tip = d3.tip()
+    .attr("class", "d3-tip")
+    .offset([-150, -30])
+    .html("<div id='tipDiv'></div>");
+
+  svg.call(tool_tip);
+
+  var svgLegend = svg.append('g')
+    .attr('class', 'gLegend')
+    .attr("transform", "translate(" + 700 + "," + 30 + ")")
+
+  var legend = svgLegend.selectAll('.legend')
+    .data(cands)
+    .enter().append('g')
+    .attr("class", "legend")
+    .attr("transform", function (d, i) { return "translate(0," + i * 20 + ")" })
+
+  legend.append("circle")
+    .attr("class", "legend-node")
+    .attr("cx", 0)
+    .attr("cy", 0)
+    .attr("r", R)
+    .style("fill", d => color(d))
+
+  legend.append("text")
+    .attr("class", "legend-text")
+    .attr("x", R * 2)
+    .attr("y", R / 2)
+    .style("fill", d => color(d))
+    .style("font-size", 12)
+    .style("font-weight", 500)
+    .text(d => d)
+
+
+
+  svg.selectAll("states")
+    .data(data)
+    .enter()
+    .append("a")
+    .attr("xlink:href", d => d.state + ".html")
+    .append("circle")
+    .attr("cx", d => x(d.xValue))
+    .attr("cy", d => y(d.yValue))
+    .attr("r", d => d.radius)
+    .style("fill", d => color(d.first))
+    
+
+
+  svg.selectAll("label")
+    .data(data)
+    .enter()
+    .append("text")
+    .text(d => d.abbrev)
+    .attr("x", d => x(d.xValue))
+    .attr("y", d => y(d.yValue) + 3)
+    .attr("text-anchor", "middle")
+    .attr("font-family", "brandon-grotesque")
+    .attr("font-weight", "500")
+    .attr("font-size", "8")
+    .attr("fill", d => colortwo(d.first))
+
 
   
-svg.append("rect")
-.attr("width",500)
-.attr("height",500)
-.attr("fill","white")
+  d3.csv("update.csv", function (error, data) {
 
-  var svgrepeat = svg.append('g')
-    .attr('class', 'grepeat')
-    .attr("transform", "translate(" + 0 + "," + 90 + ")")
-
-
-
-  var repeat = svgrepeat.selectAll('.repeat')
-    .data(data)
-    .enter().append('g')
-    .attr("class", "repeat")
-    .attr("transform", function (d, i) { return "translate(0," + i * 40 + ")" })
-
-
-    repeat.append("rect")
-    .attr("x",280)
-    .attr("y",-25)
-    .attr("width",100)
-    .attr("height",40)
-    .attr("fill",d=> winscale(d.win))
-
-    repeat.append("rect")
-    .attr("x",380)
-    .attr("y",-25)
-    .attr("width",100)
-    .attr("height",40)
-    .attr("fill",d=> delscale(d.delegates))
-
-  repeat.append("text")
-    .attr("class", "repeat-text")
-    .attr("x", 20)
-    .attr("y", 0)
-    .style("fill", "Black")
-    .style("font-size", 20)
-    .attr("font-weight", 500)
-    .text(d => d.category)
-    .attr("text-anchor", "start")
-
-    repeat.append("text")
-    .attr("class", "repeat-text")
-    .attr("x", 375)
-    .attr("y", 0)
-    .style("fill", "Black")
-    .style("font-size", 20)
-    .attr("font-weight", 500)
-    .text(d => d.win+"%")
-    .attr("text-anchor", "end")
-
-    repeat.append("text")
-    .attr("class", "repeat-text")
-    .attr("x", 475)
-    .attr("y", 0)
-    .style("fill", d => d.delegates > 1500? "white":"black")
-    .style("font-size", 20)
-    .attr("font-weight", 500)
-    .text(d => d.delegates)
-    .attr("text-anchor", "end")
-    
-    repeat.append("line")
-    .attr("x1",10)
-    .attr("x2",480)
-    .attr("y1",-25)
-    .attr("y2",-25)
-    .attr("stroke","#e1e5e8")
-    .attr("stroke-width",1)
-
-    svg.append("text")
-    .attr("x",20)
-    .attr("y",55)
-    .style("fill", "Black")
-    .style("font-size", 25)
-    .attr("font-weight",700)
-    .text("Candidate")
-
-    svg.append("text")
-    .attr("x",430)
-    .attr("y",55)
-    .style("fill", "Black")
-    .style("font-size", 20)
-    .attr("font-weight",700)
-    .attr("text-anchor","end")
-    .text("Delegates")
-    .attr("text-anchor","middle")
-
-    svg.append("text")
-    .attr("x",330)
-    .attr("y",30)
-    .style("fill", "Black")
-    .style("font-size", 20)
-    .attr("font-weight",700)
-    .attr("text-anchor","end")
-    .attr("text-anchor","middle")
-    .text("Win")
-    
-    svg.append("text")
-    .attr("x",330)
-    .attr("y",55)
-    .style("fill", "Black")
-    .style("font-size", 20)
-    .attr("font-weight",700)
-    .attr("text-anchor","middle")
-    .text("Nomination")
-
-    svg.append("line")
-    .attr("x1",10)
-    .attr("x2",480)
-    .attr("y1",65)
-    .attr("y2",65)
-    .attr("stroke","black")
-    .attr("stroke-width",3)
+    svg.selectAll("updated")
+      .data(data)
+      .enter()
+      .append("text")
+      .text(d => d.updated)
+      .attr("x", 200)
+      .attr("y", 20)
+      .attr("fill", "black")
+      .attr("font-size", 10)
+      .attr("fill", "grey")
+      .attr("text-anchor", "middle")
+      .attr("font-weight", 900)
+      .attr("text-decoration","underline")
+  })
 })
