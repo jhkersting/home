@@ -84,8 +84,6 @@ d3.csv("https://raw.githubusercontent.com/jhkersting/jhkforecasts/master/democra
   svg.selectAll("states")
     .data(data)
     .enter()
-    .append("a")
-    .attr("xlink:href", d => d.state + ".html")
     .append("circle")
     .attr("cx", d => x(d.xValue))
     .attr("cy", d => y(d.yValue))
