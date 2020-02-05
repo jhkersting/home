@@ -9,7 +9,7 @@ var delscale = d3.scaleLinear()
 
 d3.csv("https://raw.githubusercontent.com/jhkersting/jhkforecasts/master/democratic_primary/topline.csv", function (error, data) {
 
-  
+  data.sort((a,b)=> b.win - a.win)
 
 
   var svg = d3.select("#demprim").append("svg")
@@ -56,7 +56,7 @@ svg.append("rect")
     .style("fill", "Black")
     .style("font-size", 20)
     .attr("font-weight", 500)
-    .text(d => d.category)
+    .text(d => d.candidate)
     .attr("text-anchor", "start")
 
     repeat.append("text")
