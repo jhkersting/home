@@ -1,3 +1,4 @@
+d3.csv("https://raw.githubusercontent.com/jhkersting/jhkforecasts/master/democratic_primary/bubblemap.csv", function (error, data) {
 var svg = d3.select("#demprimsim")
         .append("svg")
         .attr("viewBox","0 0 660 445")
@@ -29,7 +30,7 @@ var div = d3.select("#bubblemap").append("div")
   .attr("class", "tooltip")
   .style("opacity", 0);
 
-d3.csv("https://raw.githubusercontent.com/jhkersting/jhkforecasts/master/democratic_primary/bubblemap.csv", function (error, data) {
+
 
 
 
@@ -111,7 +112,9 @@ d3.csv("https://raw.githubusercontent.com/jhkersting/jhkforecasts/master/democra
     .attr("font-weight", 700)
     .attr("font-size", "8")
     .attr("fill","black")
-})
+
 };
 
 circleTransition();
+
+})
