@@ -5,7 +5,12 @@ var delscale = d3.scaleLinear()
   .domain([0, 1990])
   .range(["white", "#002E66"]);  
 
-
+  var category = ["Biden", "Bloomberg", "Booker", "Buttigieg", "Klobuchar", "Sanders", "Steyer", "Warren", "Yang"]
+  // since Category B and E are really close to each other, assign them diverging colors
+  var color = d3.scaleOrdinal()
+    .domain(category)
+    .range(["#00FF90", "#FF6060", "#a4b1b5", "#FFC000", "#99D3FF", "#0091FF", "#EBBFFF", "#AF0BFF", "#00C181"])
+  
 
 d3.csv("https://raw.githubusercontent.com/jhkersting/jhkforecasts/master/democratic_primary/topline.csv", function (error, data) {
 
@@ -13,7 +18,7 @@ d3.csv("https://raw.githubusercontent.com/jhkersting/jhkforecasts/master/democra
 
 
   var svg = d3.select("#demprim").append("svg")
-    .attr("viewBox", "0 0 500 430")
+    .attr("viewBox", "0 0 500 400")
     .append('g')
 
   
@@ -24,7 +29,7 @@ svg.append("rect")
 
   var svgrepeat = svg.append('g')
     .attr('class', 'grepeat')
-    .attr("transform", "translate(" + 0 + "," + 90 + ")")
+    .attr("transform", "translate(" + 0 + "," + 80 + ")")
 
 
 
@@ -32,60 +37,38 @@ svg.append("rect")
     .data(data)
     .enter().append('g')
     .attr("class", "repeat")
-    .attr("transform", function (d, i) { return "translate(0," + i * 40 + ")" })
+    .attr("transform", function (d, i) { return "translate(0," + i * 80 + ")" })
 
 
-    repeat.append("rect")
-    .attr("x",280)
-    .attr("y",-25)
-    .attr("width",100)
-    .attr("height",40)
-    .attr("fill",d=> winscale(d.win))
+    
 
-    repeat.append("rect")
-    .attr("x",380)
-    .attr("y",-25)
-    .attr("width",100)
-    .attr("height",40)
-    .attr("fill",d=> delscale(d.delegates))
-
-  repeat.append("text")
-    .attr("class", "repeat-text")
+  repeat.append("image")
+    .attr("xlink:href",  d=>d.candidate+".jpg")
     .attr("x", 20)
     .attr("y", 0)
-    .style("fill", "Black")
-    .style("font-size", 20)
-    .attr("font-weight", 500)
-    .text(d => d.candidate)
-    .attr("text-anchor", "start")
-
+    .attr("height", 60)
+    
     repeat.append("text")
     .attr("class", "repeat-text")
-    .attr("x", 375)
-    .attr("y", 0)
-    .style("fill", "Black")
-    .style("font-size", 20)
-    .attr("font-weight", 500)
+    .attr("x", 315)
+    .attr("y", 30)
+    .style("fill", d=>color(d.candidate))
+    .style("font-size", 30)
+    .attr("font-weight", 700)
     .text(d => d.win+"%")
     .attr("text-anchor", "end")
 
     repeat.append("text")
     .attr("class", "repeat-text")
     .attr("x", 475)
-    .attr("y", 0)
-    .style("fill", d => d.delegates > 1500? "white":"black")
-    .style("font-size", 20)
-    .attr("font-weight", 500)
+    .attr("y", 30)
+    .style("fill",d=>color(d.candidate))
+    .style("font-size", 30)
+    .attr("font-weight", 700)
     .text(d => d.delegates)
     .attr("text-anchor", "end")
     
-    repeat.append("line")
-    .attr("x1",10)
-    .attr("x2",480)
-    .attr("y1",-25)
-    .attr("y2",-25)
-    .attr("stroke","#e1e5e8")
-    .attr("stroke-width",1)
+    
 
     svg.append("text")
     .attr("x",20)
@@ -106,7 +89,7 @@ svg.append("rect")
     .attr("text-anchor","middle")
 
     svg.append("text")
-    .attr("x",330)
+    .attr("x",270)
     .attr("y",30)
     .style("fill", "Black")
     .style("font-size", 20)
@@ -116,7 +99,7 @@ svg.append("rect")
     .text("Win")
     
     svg.append("text")
-    .attr("x",330)
+    .attr("x",270)
     .attr("y",55)
     .style("fill", "Black")
     .style("font-size", 20)
