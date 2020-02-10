@@ -83,7 +83,7 @@ d3.csv("https://raw.githubusercontent.com/jhkersting/jhkforecasts/master/democra
         .transition()        // apply a transition
         .duration(300) 
         .delay(function(d,i){return 40*i})      // apply it over 2000 milliseconds
-        .attr('fill', colors[Math.round(Math.random()*8)]) 
+        .attr('fill', colors[Math.round(Math.random()*7)]) 
         .transition() 
         .duration(300) 
         .delay(1000)      // apply it over 2000 milliseconds
@@ -91,7 +91,7 @@ d3.csv("https://raw.githubusercontent.com/jhkersting/jhkforecasts/master/democra
         .transition()        // apply a transition
         .duration(300) 
         .delay(1000)    // apply it over 2000 milliseconds
-        .attr('fill', colors[Math.round(Math.random()*8)])
+        .attr('fill', colors[Math.round(Math.random()*7)])
         .transition() 
         .duration(300) 
         .delay(1000)      // apply it over 2000 milliseconds
