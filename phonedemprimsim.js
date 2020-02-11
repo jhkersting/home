@@ -14,7 +14,7 @@ var axisPad = 12
 var R =7
 
 
-var colors = ["#00FF90", "#FF6060","#FFC000", "#99D3FF", "#0091FF", "#EBBFFF", "#AF0BFF", "#00C181"]
+var colors = ["#00C181", "#FF6060", "#FFC000", "#FF8D32", "#0091FF", "#FF2EF0", "#CD64FF", "#0070C0"]
 var category = ["Biden", "Bloomberg", "Booker", "Buttigieg", "Klobuchar", "Sanders", "Steyer", "Warren", "Yang"]
 // since Category B and E are really close to each other, assign them diverging colors
 var color = d3.scaleOrdinal()
