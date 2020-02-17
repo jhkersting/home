@@ -1,6 +1,6 @@
 var svg = d3.select("#demprimsimphone")
         .append("svg")
-        .attr("viewBox","0 0 660 445")
+        .attr("viewBox","0 0 660 545")
 
 function circleTransition() { 
 
@@ -110,6 +110,16 @@ d3.csv("https://raw.githubusercontent.com/jhkersting/jhkforecasts/master/democra
     .attr("font-family", "brandon-grotesque")
     .attr("font-weight", 700)
     .attr("font-size", "8")
+    .attr("fill","black")
+
+    svg.append("text")
+    .text("Democratic Primary Simulator")
+    .attr("x", 330)
+    .attr("y", 500)
+    .attr("text-anchor", "middle")
+    .attr("font-family", "brandon-grotesque")
+    .attr("font-weight", 700)
+    .attr("font-size", 24)
     .attr("fill","black")
 })
 };

@@ -10,182 +10,176 @@
     <meta name="twitter:title" content="Home" />
     <meta name="twitter:description" content="" />
     <meta name="twitter:image" content="https://jkstats76.files.wordpress.com/2019/02/cropped-site-icon.png" />
-
     <title>Home</title>
+    <script data-ad-client="ca-pub-8025120308040073" async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140782021-2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-    <head>
-        <script data-ad-client="ca-pub-8025120308040073" async
-            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140782021-2"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag() { dataLayer.push(arguments); }
-            gtag('js', new Date());
+        gtag('config', 'UA-140782021-2');
+    </script>
+    <link rel="icon" href="https://jkstats76.files.wordpress.com/2019/02/cropped-site-icon.png">
+    <link rel="icon" href="https://jkstats76.files.wordpress.com/2019/02/cropped-site-icon.png">
+    <script
+        src="https://raw.githubusercontent.com/GoogleChrome/lighthouse/master/lighthouse-core/audits/font-display.js"></script>
+    <script
+        src="https://raw.githubusercontent.com/GoogleChrome/lighthouse/master/lighthouse-core/audits/byte-efficiency/offscreen-images.js"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js"></script>
+    <link rel="stylesheet" href="https://use.typekit.net/htk2wjy.css">
+    <link rel="stylesheet" href="index.css">
 
-            gtag('config', 'UA-140782021-2');
-        </script>
+    <script src="demprimarywidget.js"></script>
+    <script src="presforecastwidget.js"></script>
 
+    <script>
+        var category = ["Trump", "Democrats", "3rd Party"]
+        // since Category B and E are really close to each other, assign them diverging colors
+        var colorScale = d3.scaleOrdinal()
+            .domain(category)
+            .range(["#FF6060", "#0091FF", "#FFE130"])
 
-        <link rel="icon" href="https://jkstats76.files.wordpress.com/2019/02/cropped-site-icon.png">
-        <link rel="icon" href="https://jkstats76.files.wordpress.com/2019/02/cropped-site-icon.png">
-
-        <script
-            src="https://raw.githubusercontent.com/GoogleChrome/lighthouse/master/lighthouse-core/audits/font-display.js"></script>
-        <script
-            src="https://raw.githubusercontent.com/GoogleChrome/lighthouse/master/lighthouse-core/audits/byte-efficiency/offscreen-images.js"></script>
-        <script src="https://d3js.org/d3.v4.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js"></script>
-        <link rel="stylesheet" href="https://use.typekit.net/htk2wjy.css">
-        <link rel="stylesheet" href="index.css">
-
-        <script src="demprimarywidget.js"></script>
-        <script src="presforecastwidget.js"></script>
-
-        <script>
-            var category = ["Trump", "Democrats", "3rd Party"]
-            // since Category B and E are really close to each other, assign them diverging colors
-            var colorScale = d3.scaleOrdinal()
-                .domain(category)
-                .range(["#FF6060", "#0091FF", "#FFE130"])
-
-            d3.csv("https://raw.githubusercontent.com/jhkersting/jhkforecasts/master/presidential_forecast/topline.csv", function (error, data) {
+        d3.csv("https://raw.githubusercontent.com/jhkersting/jhkforecasts/master/presidential_forecast/topline.csv", function (error, data) {
 
 
 
-                var svg = d3.select("#tablevote").append("svg")
-                    .attr("viewBox", '0 0 600 400')
-                    .append('g')
+            var svg = d3.select("#tablevote").append("svg")
+                .attr("viewBox", '0 0 600 400')
+                .append('g')
 
-                svg.append("text")
-                    .text("Projected Vote Share")
-                    .attr("x", 20)
-                    .attr("y", 40)
-                    .style("fill", "Black")
-                    .style("font-size", 30)
-                    .attr("font-weight", 700)
+            svg.append("text")
+                .text("Projected Vote Share")
+                .attr("x", 20)
+                .attr("y", 40)
+                .style("fill", "Black")
+                .style("font-size", 30)
+                .attr("font-weight", 700)
 
-                svg.append("line")
-                    .attr("x1", 20)
-                    .attr("x2", 600)
-                    .attr("y1", 60)
-                    .attr("y2", 60)
-                    .attr("stroke-width", 1)
-                    .attr("stroke", "black")
+            svg.append("line")
+                .attr("x1", 20)
+                .attr("x2", 600)
+                .attr("y1", 60)
+                .attr("y2", 60)
+                .attr("stroke-width", 1)
+                .attr("stroke", "black")
 
-                var svgLegend = svg.append('g')
-                    .attr('class', 'gLegend')
-                    .attr("transform", "translate(" + 20 + "," + 120 + ")")
-
-
-
-                var legend = svgLegend.selectAll('.legend')
-                    .data(data)
-                    .enter().append('g')
-                    .attr("class", "legend")
-                    .attr("transform", function (d, i) { return "translate(0," + i * 90 + ")" })
-
-                legend.append("circle")
-                    .attr("cx", 500)
-                    .attr("cy", -5)
-                    .attr("r", 45)
-                    .style("fill", d => colorScale(d.cand))
-                    .style("opacity", d => d.voteShare / 100)
-
-                legend.append("text")
-                    .attr("class", "legend-text")
-                    .attr("x", 7 / 2)
-                    .attr("y", 7 / 2)
-                    .style("fill", "Black")
-                    .style("font-size", 30)
-                    .attr("font-weight", 700)
-                    .text(d => d.cand)
-
-                legend.append("text")
-                    .attr("class", "legend-text")
-                    .attr("x", 500)
-                    .attr("y", 5)
-                    .style("fill", "Black")
-                    .style("font-size", 30)
-                    .attr("font-weight", 700)
-                    .text(d => d.voteShare + "%")
-                    .attr("text-anchor", "middle")
-            });
-
-        </script>
-
-        <script>
-            var category = ["Trump", "Democrats", "3rd Party"]
-            // since Category B and E are really close to each other, assign them diverging colors
-            var colorScale = d3.scaleOrdinal()
-                .domain(category)
-                .range(["#FF6060", "#0091FF", "#FFE130"])
-
-            d3.csv("https://raw.githubusercontent.com/jhkersting/jhkforecasts/master/presidential_forecast/topline.csv", function (error, data) {
+            var svgLegend = svg.append('g')
+                .attr('class', 'gLegend')
+                .attr("transform", "translate(" + 20 + "," + 120 + ")")
 
 
 
-                var svg = d3.select("#tableev").append("svg")
-                    .attr("viewBox", '0 0 600 400')
-                    .append('g')
+            var legend = svgLegend.selectAll('.legend')
+                .data(data)
+                .enter().append('g')
+                .attr("class", "legend")
+                .attr("transform", function (d, i) { return "translate(0," + i * 90 + ")" })
 
-                svg.append("text")
-                    .text("Win Presidency")
-                    .attr("x", 20)
-                    .attr("y", 40)
-                    .style("fill", "Black")
-                    .style("font-size", 30)
-                    .attr("font-weight", 700)
+            legend.append("circle")
+                .attr("cx", 500)
+                .attr("cy", -5)
+                .attr("r", 45)
+                .style("fill", d => colorScale(d.cand))
+                .style("opacity", d => d.voteShare / 100)
 
-                svg.append("line")
-                    .attr("x1", 20)
-                    .attr("x2", 600)
-                    .attr("y1", 60)
-                    .attr("y2", 60)
-                    .attr("stroke-width", 1)
-                    .attr("stroke", "black")
+            legend.append("text")
+                .attr("class", "legend-text")
+                .attr("x", 7 / 2)
+                .attr("y", 7 / 2)
+                .style("fill", "Black")
+                .style("font-size", 30)
+                .attr("font-weight", 700)
+                .text(d => d.cand)
 
-                var svgLegend = svg.append('g')
-                    .attr('class', 'gLegend')
-                    .attr("transform", "translate(" + 20 + "," + 120 + ")")
+            legend.append("text")
+                .attr("class", "legend-text")
+                .attr("x", 500)
+                .attr("y", 5)
+                .style("fill", "Black")
+                .style("font-size", 30)
+                .attr("font-weight", 700)
+                .text(d => d.voteShare + "%")
+                .attr("text-anchor", "middle")
+        });
+
+    </script>
+
+    <script>
+        var category = ["Trump", "Democrats", "3rd Party"]
+        // since Category B and E are really close to each other, assign them diverging colors
+        var colorScale = d3.scaleOrdinal()
+            .domain(category)
+            .range(["#FF6060", "#0091FF", "#FFE130"])
+
+        d3.csv("https://raw.githubusercontent.com/jhkersting/jhkforecasts/master/presidential_forecast/topline.csv", function (error, data) {
 
 
 
-                var legend = svgLegend.selectAll('.legend')
-                    .data(data)
-                    .enter().append('g')
-                    .attr("class", "legend")
-                    .attr("transform", function (d, i) { return "translate(0," + i * 90 + ")" })
+            var svg = d3.select("#tableev").append("svg")
+                .attr("viewBox", '0 0 600 400')
+                .append('g')
 
-                legend.append("circle")
-                    .attr("cx", 500)
-                    .attr("cy", -5)
-                    .attr("r", 45)
-                    .style("fill", d => colorScale(d.cand))
-                    .style("opacity", d => d.ev / 538)
+            svg.append("text")
+                .text("Win Presidency")
+                .attr("x", 20)
+                .attr("y", 40)
+                .style("fill", "Black")
+                .style("font-size", 30)
+                .attr("font-weight", 700)
 
-                legend.append("text")
-                    .attr("class", "legend-text")
-                    .attr("x", 7 / 2)
-                    .attr("y", 7 / 2)
-                    .style("fill", "Black")
-                    .style("font-size", 30)
-                    .attr("font-weight", 700)
-                    .text(d => d.cand)
+            svg.append("line")
+                .attr("x1", 20)
+                .attr("x2", 600)
+                .attr("y1", 60)
+                .attr("y2", 60)
+                .attr("stroke-width", 1)
+                .attr("stroke", "black")
 
-                legend.append("text")
-                    .attr("class", "legend-text")
-                    .attr("x", 500)
-                    .attr("y", 5)
-                    .style("fill", "Black")
-                    .style("font-size", 30)
-                    .attr("font-weight", 700)
-                    .text(d => d.win + "%")
-                    .attr("text-anchor", "middle")
-            });
+            var svgLegend = svg.append('g')
+                .attr('class', 'gLegend')
+                .attr("transform", "translate(" + 20 + "," + 120 + ")")
 
-        </script>
 
-    </head>
+
+            var legend = svgLegend.selectAll('.legend')
+                .data(data)
+                .enter().append('g')
+                .attr("class", "legend")
+                .attr("transform", function (d, i) { return "translate(0," + i * 90 + ")" })
+
+            legend.append("circle")
+                .attr("cx", 500)
+                .attr("cy", -5)
+                .attr("r", 45)
+                .style("fill", d => colorScale(d.cand))
+                .style("opacity", d => d.ev / 538)
+
+            legend.append("text")
+                .attr("class", "legend-text")
+                .attr("x", 7 / 2)
+                .attr("y", 7 / 2)
+                .style("fill", "Black")
+                .style("font-size", 30)
+                .attr("font-weight", 700)
+                .text(d => d.cand)
+
+            legend.append("text")
+                .attr("class", "legend-text")
+                .attr("x", 500)
+                .attr("y", 5)
+                .style("fill", "Black")
+                .style("font-size", 30)
+                .attr("font-weight", 700)
+                .text(d => d.win + "%")
+                .attr("text-anchor", "middle")
+        });
+
+    </script>
+
+</head>
 
 <body>
     <div class="computer" style="border-bottom: solid grey 1.0pt;">
@@ -251,144 +245,17 @@
     <div class="computer">
         <div class="row">
             <div class="column" style="width:70%; ">
-                <table style="border-collapse: collapse;" cellspacing="0" cellpadding="0" width="100%">
-                    <tbody>
-                        <!--Dem Primary Sim-->
-                        <tr style="height: 40px;"></tr>
-                        <tr style=" border-bottom: solid grey 1.0pt;">
-                            <td style="width: 50%;margin-bottom: 30px  " valign="top" width="50%">
-                                <a href="https://projects.jhkforecasts.com/democratic_primary/primarysimulation">
-                                    <div id="demprimsim"></div>
-                                </a>
-                            </td>
-                            <td style="width: 50%;margin-top: 30px " valign="top" width="50%">
-                                <h1 style="margin-left: 30pt;font-weight: 500;"><span style="color: black;"><a
-                                            href="https://projects.jhkforecasts.com/democratic_primary/primarysimulation"><span
-                                                style="color: black;">Democratic Primary Simulator</span></a></span>
-                                </h1>
-                                <p style="margin-left: 30pt;">Simulate the Democratic Primary for yourself!</p>
-                        </tr>
-                        <!--Pres method-->
-                        <tr style="height: 40px;"></tr>
-                        <tr style=" border-bottom: solid grey 1.0pt;">
-                            <td style="width: 50%;margin-bottom: 30px  " valign="top" width="50%">
-                                <a href="https://projects.jhkforecasts.com/presidential_forecast/forecast_methodology"><img
-                                        style="width:100%"
-                                        src="https://raw.githubusercontent.com/jhkersting/jhkforecasts/master/2020_pres_img-01.jpg"></img></a>
-                            </td>
-                            <td style="width: 50%;margin-top: 30px " valign="top" width="50%">
-                                <h1 style="margin-left: 30pt;font-weight: 500;"><span style="color: black;"><a
-                                            href="https://projects.jhkforecasts.com/presidential_forecast/forecast_methodology"><span
-                                                style="color: black;">2020 Presidential Forecast
-                                                Methodology</span></a></span></h1>
-                                <p style="margin-left: 30pt;">How the Presidential Forecast works.</p>
-                        </tr>
-                        <!--Senate Forecast-->
-                        <tr style="height: 40px;"></tr>
-                        <tr style=" border-bottom: solid grey 1.0pt;">
-                            <td style="width: 50%;margin-bottom: 30px  " valign="top" width="50%">
-                                <a href="https://projects.jhkforecasts.com/senate_forecast/"><img style="width:100%"
-                                        src="https://raw.githubusercontent.com/jhkersting/jhkforecasts/master/2020_senate_forecast_img-01.jpg"></img></a>
-                            </td>
-                            <td style="width: 50%;margin-top: 30px " valign="top" width="50%">
-                                <h1 style="margin-left: 30pt;font-weight: 500;"><span style="color: black;"><a
-                                            href="https://projects.jhkforecasts.com/senate_forecast/"><span
-                                                style="color: black;">Senate Forecast</span></a></span></h1>
-                                <p style="margin-left: 30pt;">Will the Republicans hold onto their majority, or will the
-                                    Democrats win back the majority?</p>
-                        </tr>
-                        <!--Twitter Ratings-->
-                        <tr style="height: 40px;"></tr>
-                        <tr style=" border-bottom: solid grey 1.0pt;">
-                            <td style="width: 50%;margin-bottom: 30px  " valign="top" width="50%">
-                                <a href="https://jhkforecasts.com/politics/20-pres-twitter-ratings.html"><img
-                                        style="width:100%"
-                                        src="https://jkstats76.files.wordpress.com/2019/07/twitter-rattings-01.png"></img></a>
-                            </td>
-                            <td style="width: 50%;margin-top: 30px " valign="top" width="50%">
-                                <h1 style="margin-left: 30pt;font-weight: 500;"><span style="color: black;"><a
-                                            href="https://jhkforecasts.com/politics/20-pres-twitter-ratings.html"><span
-                                                style="color: black;">Twitter 2020 Presidential
-                                                Forecast</span></a></span></h1>
-                                <p style="margin-left: 30pt;">How the Twitterverse rates the 2020 Presidential Election.
-                                </p>
-                        </tr>
-                        <!--Presidential Forecast-->
-                        <tr style="height: 40px;"></tr>
-                        <tr style=" border-bottom: solid grey 1.0pt;">
-                            <td style="width: 50%;margin-bottom: 30px  " valign="top" width="50%">
-                                <a href="https://projects.jhkforecasts.com/presidential_forecast/"><img
-                                        style="width:100%"
-                                        src="https://raw.githubusercontent.com/jhkersting/jhkforecasts/master/2020_pres_img-01.jpg"></img></a>
-                            </td>
-                            <td style="width: 50%;margin-top: 30px " valign="top" width="50%">
-                                <h1 style="margin-left: 30pt;font-weight: 500;"><span style="color: black;"><a
-                                            href="https://projects.jhkforecasts.com/presidential_forecast/"><span
-                                                style="color: black;">Presidential Forecast</span></a></span></h1>
-                                <p style="margin-left: 30pt;">Can President Trump get a second term, or will the
-                                    Democrats make him a lame duck President?</p>
-                        </tr>
-                        <!--Democratic Primary Forecast-->
-                        <tr style="height: 40px;"></tr>
-                        <tr style="border-bottom: solid grey 1.0pt;">
-                            <td style="width: 50%; " valign="top" width="50%">
-                                <a href="https://projects.jhkforecasts.com/democratic_primary/"><img style="width:100%"
-                                        src="https://raw.githubusercontent.com/jhkersting/jhkforecasts/master/2020_dem_prim_img-01.jpg"></img></a>
-                            </td>
-                            <td style="width: 50%; ; " valign="top" width="50%">
-                                <h1 style="margin-left: 30pt; text-align: left;font-weight: 500;"><span
-                                        style="color: black;"><a
-                                            href="https://projects.jhkforecasts.com/democratic_primary/"><span
-                                                style="color: black;">Democratic Primary Forecast</span></a></span></h1>
-                                <p style="margin-left: 30pt;">Who will face off against President Trump in the 2020
-                                    election?</p>
 
-                        </tr>
 
-                        <!--Baseball Elo-->
-                        <tr style="height: 40px;"></tr>
-                        <tr style="border-bottom: solid grey 1.0pt;">
-                            <td style="width: 50%; " valign="top" width="50%">
-                                <a href="sports/tx_baseball_elo_19"><img style="width:100%"
-                                        src="https://jkstats76.files.wordpress.com/2019/03/baseball-clip-art-01.jpg"></img></a>
-                            </td>
-                            <td style="width: 50%; ; " valign="top" width="50%">
-                                <h1 style="margin-left: 30pt; text-align: left;font-weight: 500;"><span
-                                        style="color: black;"><a href="sports/tx_baseball_elo_19"><span
-                                                style="color: black;">'19 Texas Baseball Ratings</span></a></span></h1>
-                                <p style="margin-left: 30pt;">Who is the best team in Texas?</p>
-                        </tr>
-                        <tr></tr>
-                        <!--basketball playoffs-->
-                        <tr style="height: 40px;"></tr>
-                        <tr style="border-bottom: solid grey 1.0pt;">
-                            <td style="width: 50%; " valign="top" width="50%">
-                                <a href="sports/tx_basketball_playoffs_19"><img style="width:100%"
-                                        src="https://jkstats76.files.wordpress.com/2019/02/playoffs-clip-art-e1550267166289.jpg"></img></a>
-                            </td>
-                            <td style="width: 50%; ; " valign="top" width="50%">
-                                <h1 style="margin-left: 30pt; text-align: left;font-weight: 500;"><span
-                                        style="color: black;"><a href="sports/tx_basketball_playoffs_19"><span
-                                                style="color: black;">'19 Texas Basketball Playoffs</span></a></span>
-                                </h1>
-                                <p style="margin-left: 30pt;">Who will win the state title?</p>
-                        </tr>
-                        <!--'18 senateforecast-->
-                        <tr style="height: 40px;"></tr>
-                        <tr style="border-bottom: solid grey 1.0pt;">
-                            <td style="width: 50%; " valign="top" width="50%">
-                                <a href="politics/senate_forecast_18"><img style="width:100%"
-                                        src="https://jkstats76.files.wordpress.com/2019/01/senate-18.jpg"></img></a>
-                            </td>
-                            <td style="width: 50%; ; " valign="top" width="50%">
-                                <h1 style="margin-left: 30pt; text-align: left;font-weight: 500;"><span
-                                        style="color: black;"><a href="politics/senate_forecast_18"><span
-                                                style="color: black;">'18 Senate Forecast</span></a></span></h1>
-                                <p style="margin-left: 30pt;">Will Republicans be able to hold off the blue wave to keep
-                                    their majority in the Senate?</p>
-                        </tr>
-                    </tbody>
-                </table>
+                <a href="https://projects.jhkforecasts.com/democratic_primary/primarysimulation">
+                    <div id="demprimsim"></div>
+                </a>
+                <hr>
+                <div>
+                    <a href="https://projects.jhkforecasts.com/senate_forecast"> <img
+                            src="2020_senate_forecast-01.svg"></a>
+                </div>
+                <hr>
             </div>
             <!--Projects widgets-->
             <div class="column" style="width:30%; border-left:solid grey 1.0pt;">
@@ -409,138 +276,48 @@
                     <div id="tableev" style="width:80%;text-align:center;margin-left: 10%"></div>
                 </a>
                 <hr>
-                <h3 style=" text-align: center;font-weight: 500;">Suggested Sites</h3>
-                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                <!-- projects -->
-                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8025120308040073"
-                    data-ad-slot="1620783175" data-ad-format="auto" data-full-width-responsive="true"></ins>
-                <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
-                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                <!-- projects -->
-                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8025120308040073"
-                    data-ad-slot="1620783175" data-ad-format="auto" data-full-width-responsive="true"></ins>
-                <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
+
             </div>
         </div>
     </div>
     <div class="phone">
         <!--dem prim method-->
-        <div style="border-bottom:solid grey 1.0pt;">
+        <div>
             <a href="https://projects.jhkforecasts.com/democratic_primary/primarysimulation">
                 <div id="demprimsimphone"></div>
             </a>
-            <h1 style="text-align: center;font-weight: 500;">Democratic Primary Simulator
-            </h1>
-            </a>
+            <hr />
         </div>
         <!--pres method-->
-        <div style="border-bottom:solid grey 1.0pt;">
-            <a href="https://projects.jhkforecasts.com/presidential_forecast/forecast_methodology"><img
-                    style="width:80%;margin-left: 10%;"
-                    src="https://raw.githubusercontent.com/jhkersting/jhkforecasts/master/2020_pres_img-01.jpg"></img>
-                <h1 style="text-align: center;font-weight: 500;">2020 Presidential Forecast Methodology
-                </h1>
-            </a>
+        <div>
+            <a href="https://projects.jhkforecasts.com/senate_forecast"> <img src="2020_senate_forecast-03.svg"></a>
+            <hr>
         </div>
-        <!--Senate Forecast-->
-        <div style="border-bottom:solid grey 1.0pt;">
-            <a href="https://projects.jhkforecasts.com/senate_forecast/"><img style="width:80%;margin-left: 10%;"
-                    src="https://raw.githubusercontent.com/jhkersting/jhkforecasts/master/2020_senate_forecast_img-01.jpg"></img></a>
-            <h1 style="text-align: center;font-weight: 500;"><span style="color: black;"><a
-                        href="https://projects.jhkforecasts.com/senate_forecast/"><span style="color: black;">Senate
-                            Forecast</span></a></span></h1>
-        </div>
-        <!--Twitter Forecast-->
-        <div style="border-bottom:solid grey 1.0pt;">
-            <a href="https://jhkforecasts.com/politics/20-pres-twitter-ratings.html"><img
-                    style="width:80%;margin-left: 10%;"
-                    src="https://jkstats76.files.wordpress.com/2019/07/twitter-rattings-01.png"></img></a>
-            <h1 style="text-align: center;font-weight: 500;"><span style="color: black;"><a
-                        href="https://jhkforecasts.com/politics/20-pres-twitter-ratings.html"><span
-                            style="color: black;">Senate
-                            Forecast</span></a></span></h1>
-        </div>
-        <!--Presidential Forecast-->
-        <div style="border-bottom:solid grey 1.0pt;">
-            <a href="https://projects.jhkforecasts.com/presidential_forecast/"><img style="width:80%;margin-left: 10%;"
-                    src="https://raw.githubusercontent.com/jhkersting/jhkforecasts/master/2020_pres_img-01.jpg"></img></a>
-            <h1 style="text-align: center;font-weight: 500;"><span style="color: black;"><a
-                        href="https://projects.jhkforecasts.com/presidential_forecast/"><span
-                            style="color: black;">Presidential Forecast</span></a></span></h1>
-        </div>
-        <!--Democratic Primary-->
-        <div style="border-bottom:solid grey 1.0pt;">
-            <a href="https://projects.jhkforecasts.com/democratic_primary/"><img style="width:80%;margin-left: 10%;"
-                    src="https://raw.githubusercontent.com/jhkersting/jhkforecasts/master/2020_dem_prim_img-01.jpg"></img></a>
-            <h1 style="text-align: center;font-weight: 500;"><span style="color: black;"><a
-                        href="https://projects.jhkforecasts.com/democratic_primary/"><span
-                            style="color: black;">Democratic Primary</span></a></span></h1>
-        </div>
-        <!--Baseball Elo-->
-        <div style="border-bottom:solid grey 1.0pt;">
-            <a href="sports/tx_baseball_elo_19"><img style="width:80%;margin-left: 10%;"
-                    src="https://jkstats76.files.wordpress.com/2019/03/baseball-clip-art-01.jpg"></img>
-                <h1 style="text-align: center;font-weight: 500;">'19 Texas Baseball Ratings
-                </h1>
-            </a>
-        </div>
-        <!--basketball playoffs-->
-        <div style="border-bottom:solid grey 1.0pt;">
-            <a href="sports/tx_basketball_playoffs_19"><img style="width:80%;margin-left: 10%;"
-                    src="https://jkstats76.files.wordpress.com/2019/02/playoffs-clip-art-e1550267166289.jpg"></img>
-                <h1 style="text-align: center;font-weight: 500;">'19 Texas Basketball Playoffs
-                </h1>
-            </a>
-        </div>
-        <!--18 senate-->
-        <div style="border-bottom:solid grey 1.0pt;">
-            <a href="politics/senate_forecast_18"><img style="width:80%;margin-left: 10%;"
-                    src="https://jkstats76.files.wordpress.com/2019/01/senate-18.jpg"></img>
-                <h1 style="text-align: center;font-weight: 500;">'18 Senate Forecast
-                </h1>
-            </a>
-        </div>
-        <!--Projects widgets-->
 
-        <h1 style=" text-align: center;font-weight: 900;">Projects</h1>
-        <hr>
-        <a href="https://projects.jhkforecasts.com/democratic_primary/"><h3 style=" text-align: center;font-weight: 900;">Democratic
-            Primary</h3>
-        <div id="demprimcopy"></div>
-        </a>
-
-        <hr>
-        <h3 style=" text-align: center;font-weight: 900;"><span style="color: black;"><a
-                    href="https://projects.jhkforecasts.com/presidential_forecast/"><span
-                        style="color: black;">President</span></a></span></h3>
-
-        <hr>
     </div>
     <script src="demprimarywidget copy.js"></script>
     <script src="demprimarysimulation.js"></script>
     <script src="phonedemprimsim.js"></script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-h2+d+5c-9-3e"
-        data-ad-client="ca-pub-8025120308040073" data-ad-slot="8603820464"></ins>
-    <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-h2+d+5c-9-3e"
-        data-ad-client="ca-pub-8025120308040073" data-ad-slot="8603820464"></ins>
-    <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-h2+d+5c-9-3e"
-        data-ad-client="ca-pub-8025120308040073" data-ad-slot="8603820464"></ins>
-    <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
+    <div>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-h2+d+5c-9-3e"
+            data-ad-client="ca-pub-8025120308040073" data-ad-slot="8603820464"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-h2+d+5c-9-3e"
+            data-ad-client="ca-pub-8025120308040073" data-ad-slot="8603820464"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-h2+d+5c-9-3e"
+            data-ad-client="ca-pub-8025120308040073" data-ad-slot="8603820464"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
 </body>
 
 </html>
