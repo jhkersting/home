@@ -35,7 +35,7 @@ d3.csv("https://raw.githubusercontent.com/jhkersting/jhkforecasts/master/democra
 
 
   repeat.append("image")
-    .attr("xlink:href", d => d.candidate + ".jpg")
+    .attr("xlink:href", d => d.candidate + "-01.png")
     .attr("x", 100)
     .attr("y", 5)
     .attr("height", 40)
