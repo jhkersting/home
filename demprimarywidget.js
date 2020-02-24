@@ -36,11 +36,8 @@ d3.csv("https://raw.githubusercontent.com/jhkersting/jhkforecasts/master/democra
 
   repeat.append("image")
     .attr("xlink:href", d => d.candidate + "-01.png")
-    .attr("x", 100)
-    .attr("y", 0)
     .attr("height", 60)
-    .transition()
-    .duration(500)
+    .attr("width", 60)
     .attr("x", d => x(d.win) + 5)
     .attr("y", 0)
     
@@ -58,11 +55,7 @@ d3.csv("https://raw.githubusercontent.com/jhkersting/jhkforecasts/master/democra
   repeat.append("rect")
     .attr("x", 100)
     .attr("y", 5)
-    .attr("width", 0)
-    .attr("height", 50)
     .style("fill", d => color(d.candidate))
-    .transition()
-    .duration(500)
     .attr("width", d => x(d.win) - 100)
     .attr("height", 50)
     
