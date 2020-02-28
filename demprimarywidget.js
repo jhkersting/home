@@ -1,14 +1,14 @@
-var candidates = ["Biden", "Bloomberg", "Booker", "Buttigieg", "Klobuchar", "Sanders", "Steyer", "Warren", "Yang"]
+var candidates = ["Biden", "Bloomberg", "Booker", "Buttigieg", "Klobuchar", "Sanders", "Steyer", "Warren", "Yang","No one"]
 
 var color = d3.scaleOrdinal()
   .domain(candidates)
-  .range(["#00C181", "#FF6060", "#a4b1b5", "#FFC000", "#FF8D32", "#0091FF", "#FF2EF0", "#CD64FF", "#0070C0"])
+  .range(["#00C181", "#FF6060", "#a4b1b5", "#FFC000", "#FF8D32", "#0091FF", "#FF2EF0", "#CD64FF", "#0070C0","grey"])
 
 d3.csv("https://raw.githubusercontent.com/jhkersting/jhkforecasts/master/democratic_primary/topline.csv", function (error, data) {
 
-  data.sort((a, b) => b.win - a.win)
-
-  var max_win = data[0].win
+  data.sort((a, b) => b.majority - a.majority)
+  console.log(data)
+  var max_win = data[0].majority
 
   var x = d3.scaleLinear()
     .domain([0, max_win])
@@ -38,7 +38,7 @@ d3.csv("https://raw.githubusercontent.com/jhkersting/jhkforecasts/master/democra
     .attr("xlink:href", d => d.candidate + "-01.png")
     .attr("height", 60)
     .attr("width", 60)
-    .attr("x", d => x(d.win) + 5)
+    .attr("x", d => x(d.majority) + 5)
     .attr("y", 0)
     
 
@@ -46,17 +46,17 @@ d3.csv("https://raw.githubusercontent.com/jhkersting/jhkforecasts/master/democra
     .attr("class", "repeat-text")
     .attr("x", 95)
     .attr("y", 40)
-    .style("fill", d => color(d.candidate))
+    .style("fill", (d,i) => color(d.candidate))
     .style("font-size", 30)
     .attr("font-weight", 700)
-    .text(d => d.win + "%")
+    .text(d => d.majority + "%")
     .attr("text-anchor", "end")
 
   repeat.append("rect")
     .attr("x", 100)
     .attr("y", 5)
     .style("fill", d => color(d.candidate))
-    .attr("width", d => x(d.win) - 100)
+    .attr("width", d => x(d.majority) - 100)
     .attr("height", 50)
     
   svg.append("text")
