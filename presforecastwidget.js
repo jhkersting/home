@@ -20,7 +20,7 @@ var colorScale = d3.scaleOrdinal()
   .domain(category)
   .range(["#FF6060", "#0091FF", "#FFE130"])
 
-d3.csv("https://raw.githubusercontent.com/jhkersting/jhkforecasts/master/presidential_forecast/timechange.csv", function (error, data) {
+d3.csv("https://raw.githubusercontent.com/jhkersting/jhkforecasts/master/presidential-forecast/timechange.csv", function (error, data) {
 
   var data = data.filter(function (d) { return d.state == 'US'; })
 
