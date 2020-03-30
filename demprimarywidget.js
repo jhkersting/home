@@ -4,7 +4,7 @@ var color = d3.scaleOrdinal()
   .domain(candidates)
   .range(["#00C181", "#FF6060", "#a4b1b5", "#FFC000", "#FF8D32", "#0091FF", "#FF2EF0", "#CD64FF", "#0070C0","#7D7E81"])
 d3.csv("https://raw.githubusercontent.com/jhkersting/jhkforecasts/master/democratic_primary/topline.csv", function (error, data) {
-
+  data.sort((a, b) => b.delegates - a.delegates)
   data.sort((a, b) => b.majority - a.majority)
   console.log(data)
   var max_win = data[0].majority

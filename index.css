@@ -196,3 +196,6 @@ div.tooltip {
     display: none;
   }
 }
+hr{
+  border-top : gray
+}
