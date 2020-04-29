@@ -9,7 +9,7 @@
     <meta name="twitter:site" content="@jhkforecasts" />
     <meta name="twitter:title" content="Home" />
     <meta name="twitter:description" content="" />
-    <meta name="twitter:image" content="https://jkstats76.files.wordpress.com/2019/02/cropped-site-icon.png" />
+    <meta name="twitter:image" content="LOGO-01" />
     <title>Home</title>
     <script data-ad-client="ca-pub-8025120308040073" async
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -21,20 +21,21 @@
 
         gtag('config', 'UA-140782021-2');
     </script>
+    <style>
+        td {
+            border-bottom: lightgray solid 1pt;
+        }
+    </style>
     <link rel="icon" href="https://jhkforecasts.com/LOGO-01.png">
     <script
         src="https://raw.githubusercontent.com/GoogleChrome/lighthouse/master/lighthouse-core/audits/font-display.js"></script>
     <script
         src="https://raw.githubusercontent.com/GoogleChrome/lighthouse/master/lighthouse-core/audits/byte-efficiency/offscreen-images.js"></script>
     <script src="https://d3js.org/d3.v4.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js"></script>
     <link rel="stylesheet" href="https://use.typekit.net/htk2wjy.css">
     <link rel="stylesheet" href="index.css">
-    <script src="senate-widget.js"></script>
-    <script src="demprimarywidget.js"></script>
-    <script src="presforecastwidget.js"></script>
 
-    
+
 
 </head>
 
@@ -65,7 +66,6 @@
                 </tr>
             </tbody>
         </table>
-        <hr>
 
     </div>
 
@@ -94,39 +94,13 @@
                 </tr>
             </tbody>
         </table>
-        <hr>
     </div>
 
 
     <div class="computer">
         <div class="row">
             <div class="column" style="width:70%; ">
-                <div>
-                    <div>
-                        <a href="https://projects.jhkforecasts.com/senate_forecast"> <img
-                                src="2020_senate_forecast-01.svg"></a>
-
-                        <hr>
-                    </div>
-                    <a href="https://projects.jhkforecasts.com/presidential-forecast/"> <img
-                            src="Presidential-Forecast-01.svg"></a>
-
-                    <hr>
-                </div>
-
-                <div>
-                    <a href="https://projects.jhkforecasts.com/presidential-forecast/forecast_methodology"> <img
-                            src="2020_pres_method-01.svg"></a>
-
-                    <hr>
-                </div>
-
-
-                <div>
-                    <a href="https://projects.jhkforecasts.com/democratic_primary"> <img
-                            src="democratic_primary-01.svg"></a>
-
-                </div>
+                <div id="home"></div>
             </div>
             <!--Projects widgets-->
             <div class="column" style="width:30%; border-left:solid grey 1.0pt;">
@@ -142,65 +116,19 @@
                     <div id="senate-comp"></div>
                 </a>
                 <hr>
-                <h3 style=" text-align: center;font-weight: 900;"><span style="color: black;"><a
-                            href="https://projects.jhkforecasts.com/democratic_primary/"><span
-                                style="color: black;">Democratic Primary</span></a></span></h3>
-                <a href="https://projects.jhkforecasts.com/democratic_primary/">
-                    <div id="demprim"></div>
-                </a>
-
-
-
+                
             </div>
         </div>
     </div>
+
     <div class="phone">
-        <div class="politics">
-            <a href="https://projects.jhkforecasts.com/presidential-forecast"> <img
-                    src="Presidential-Forecast-03.svg"></a>
-
-            <hr>
-        </div>
-        <!--pres method-->
-        <div class="politics">
-            <a href="https://projects.jhkforecasts.com/presidential-forecast/forecast_methodology"> <img
-                    src="2020_pres_method-03.svg"></a>
-            <hr>
-        </div>
-        <!--senate forecast-->
-        <div class="politics">
-            <a href="https://projects.jhkforecasts.com/senate_forecast"> <img src="2020_senate_forecast-03.svg"></a>
-            <hr>
-        </div>
-        <!--dem prim-->
-
-        <!--twitter ratings-->
-        <div class="politics">
-            <a href="https://jhkforecasts.com/politics/20-pres-twitter-ratings.html"> <img style="width: 100%;"
-                    src="https://jkstats76.files.wordpress.com/2019/07/twitter-rattings-01.png">
-                <h1 style="text-align: center;font-size: 40px;font-weight: 700;">Twitter Ratings</h1>
-            </a>
-            <hr>
-        </div>
-
+        <div id="homePhone"></div> 
     </div>
-    <script src="demprimarywidget copy.js"></script>
+
     <script src="pres-widget.js"></script>
+    <script src="home.js"></script>
 
-
-    <div>
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        <ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-h2+d+5c-9-3e"
-            data-ad-client="ca-pub-8025120308040073" data-ad-slot="8603820464"></ins>
-        <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        <ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-h2+d+5c-9-3e"
-            data-ad-client="ca-pub-8025120308040073" data-ad-slot="8603820464"></ins>
-        <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
+    <div style="text-align: center;">
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         <ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-h2+d+5c-9-3e"
             data-ad-client="ca-pub-8025120308040073" data-ad-slot="8603820464"></ins>
