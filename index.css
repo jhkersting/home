@@ -179,23 +179,3 @@ div.tooltip {
   clear: both;
 }
 
-@media only screen and (max-width:850px) {
-  .computer {
-    display: none;
-  }
-  .phone {
-    display: inline;
-  }
-}
-
-@media only screen and (min-width:851px) {
-  .computer {
-    display: inline;
-  }
-  .phone {
-    display: none;
-  }
-}
-hr{
-  border-top : gray
-}
