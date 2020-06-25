@@ -7,50 +7,7 @@ queue()
     .await(ready);
 
 function ready(error, pres, senate, house, data) {
-    if (error) throw error;
-    console.log(data)
-    var home = d3.select("#home")
-        .append("table")
-        .append("tbody")
-
-
-
-    home.selectAll("all")
-        .data(data)
-        .enter()
-        .append("tr")
-        .attr("id", (d, i) => "row" + i)
-        .attr("width", "100%")
-
-
-
-
-    for (let a = 0; a < data.length; a++) {
-        var rowID = "row" + a
-        var rowData = data[a]
-        var rowAppend = d3.select("#" + rowID)
-        var rowIDPhone = "rowPhone" + a
-
-        rowAppend.append("td")
-            .attr("width", "30%")
-            .append("a")
-            .attr("href", d => d.pageLink)
-            .append("img")
-            .attr("src", rowData.photoLink)
-            .attr("width", "100%")
-
-
-
-        rowAppend.append("td")
-            .attr("width", "50%")
-            .attr("valign", "top")
-            .append("a")
-            .attr("href", d => d.pageLink)
-            .append("h1")
-            .text(rowData.description)
-            .style("font-size", "3vw")
-            .style("font-weight", 700)
-    }
+    
     var trumpWin = +pres[pres.length - 3].win
     var senateRepWin = +senate[senate.length - 108].win
     var houseRepWin = +house[house.length - 1].repWin
