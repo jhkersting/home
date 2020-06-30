@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="icon" href="https://jhkforecasts.com/LOGO-01.png" >
+    <link rel="icon" href="https://jhkforecasts.com/LOGO-01.png">
     <script
         src="https://raw.githubusercontent.com/GoogleChrome/lighthouse/master/lighthouse-core/audits/font-display.js"></script>
     <script
@@ -13,9 +14,64 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js"></script>
     <link rel="stylesheet" href="https://use.typekit.net/htk2wjy.css">
     <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="pattern.css">
 </head>
+
 <body>
-    <div id="home"></div>
-    <script src="home.js"></script>
+    <div id="test"></div>
+    <svg height="10" width="10" xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <defs>
+            <pattern id="circles-1" patternUnits="userSpaceOnUse" width="10" height="10">
+                <image
+                    xlink:href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxMCcgaGVpZ2h0PScxMCc+CiAgPHJlY3Qgd2lkdGg9JzEwJyBoZWlnaHQ9JzEwJyBmaWxsPSJ3aGl0ZSIgLz4KICA8Y2lyY2xlIGN4PSIxIiBjeT0iMSIgcj0iMSIgZmlsbD0iYmxhY2siLz4KPC9zdmc+"
+                    x="0" y="0" width="10" height="10"> </image>
+            </pattern>
+        </defs>
+    </svg>
+
+    <script>
+        points = [[10, 10], [200, 20], [10, 500]];
+
+line = d3.line();
+
+ var svg = d3.select("body").append("svg")
+  .attr("width", 600)
+  .attr("height", 500)
+  .attr("margin", 30)
+  .attr("tabindex", 1);
+
+
+  var defs = svg.append('defs');
+defs.append('pattern')
+   .attr('id', 'hash')
+   .attr('patternUnits', 'userSpaceOnUse')
+   .attr('width', '6')
+   .attr('height', '6');
+
+/*  var defs = svg.append('pattern');
+defs
+   .attr('id', 'hash')
+   .attr('patternUnits', 'userSpaceOnUse')
+   .attr('width', '6')
+   .attr('height', '6');*/
+
+
+path = svg.append("path")
+   .datum(points);
+
+
+path.attr("d", function (d) {
+   var lines = new Array();
+
+   for (var i = 0; i < d.length; i++) {
+       lines.push([d[i][0], d[i][1]]);
+   }
+   return line(lines);
+})
+//.style("fill", "red");
+//.attr("fill", "red") 
+.style("fill", "url(#hash)");//url(#hash)
+    </script>
 </body>
+
 </html>
