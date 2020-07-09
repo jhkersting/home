@@ -9,7 +9,7 @@ queue()
 function ready(error, pres, senate, house, data) {
     
     var trumpWin = +pres[pres.length - 3].win
-    var senateRepWin = +senate[senate.length - 108].win
+    var senateRepWin = +senate[senate.length - 2].win
     var houseRepWin = +house[house.length - 1].repWin
     console.log(houseRepWin)
 
