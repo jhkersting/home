@@ -29,7 +29,6 @@
         }
         
         #computerTop {
-            height: 7vw;
             border-bottom: 1px black solid;
         }
         
@@ -38,7 +37,7 @@
             text-align: center;
         }
         
-        @media only screen and (max-width:601px) {
+        @media only screen and (max-width:750px) {
             #homeComputer {
                 display: none;
             }
@@ -53,7 +52,7 @@
             }
         }
         
-        @media only screen and (min-width:600px) {
+        @media only screen and (min-width:750px) {
             #homeComputer {
                 width: 80%;
                 margin-left: 10%;
@@ -95,14 +94,16 @@
 <body>
 
     <div id="computerTop">
-        <img style="height: 7vw;float: left;" src="LOGO-01.png">
+        <img style="height: 10vw" src="LOGO-01.png">
     </div>
     <div id="phoneTop">
-        <h1 style="font-family: sf-mono;">JHK FORECASTS</h1>
+        <img style="height: 100px;" src="LOGO-02.svg">
     </div>
     <div id="homeComputer"></div>
     <div id="homePhone"></div>
-    <div id="footer"></div>
+    <div style="background-color: #395c94;height: 100px;margin-top: 25px;border-radius: 10px;vertical-align: bottom;">
+        <p style="font-family: ibm-plex-mono;padding-left: 10px;color: white;font-size: 20px;padding-top: 30px;">JHK FORECASTS 2021</p>
+    </div>
 </body>
 
 </html>
