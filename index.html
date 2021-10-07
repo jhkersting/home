@@ -7,10 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@jhkforecasts" />
-    <meta name="twitter:title" content="Home" />
+    <meta name="twitter:title" content="JHK Forecasts" />
     <meta name="twitter:description" content="" />
     <meta name="twitter:image" content="LOGO-01" />
-    <title>Home</title>
+    <title>JHK Forecasts</title>
     <script data-ad-client="ca-pub-8025120308040073" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140782021-2"></script>
     <script>
@@ -29,7 +29,6 @@
         }
         
         #computerTop {
-            height: 7vw;
             border-bottom: 1px black solid;
         }
         
@@ -38,9 +37,9 @@
             text-align: center;
         }
         
-        @media only screen and (max-width:601px) {
-            #home {
-                width: 100%;
+        @media only screen and (max-width:750px) {
+            #homeComputer {
+                display: none;
             }
             #computerTop {
                 display: none;
@@ -48,12 +47,16 @@
             #phoneTop {
                 display: block;
             }
+            #phonePhone {
+                display: block;
+            }
         }
         
-        @media only screen and (min-width:600px) {
-            #home {
+        @media only screen and (min-width:750px) {
+            #homeComputer {
                 width: 80%;
                 margin-left: 10%;
+                display: block;
             }
             #computerTop {
                 display: block;
@@ -61,16 +64,20 @@
             #phoneTop {
                 display: none;
             }
+            #homePhone {
+                display: none;
+            }
         }
         
-        #footer {
+        #computerTop {
             position: fixed;
-            bottom: 0;
+            top: 0;
             width: 100%;
-            text-align: center;
             background-color: white;
-            border-top: solid 1px black;
-            margin-top: inherit;
+        }
+        
+        #homeComputer {
+            margin-top: 5vw;
         }
     </style>
     <link rel="icon" href="https://jhkforecasts.com/LOGO-01.png">
@@ -87,89 +94,26 @@
 
 <body>
 
-    <div id="computerTop">
-        <img style="height: 7vw;float: left;" src="LOGO-01.png">
+    <div id="computerTop" style="height: 5vw;border-bottom: black solid 1px;align-items: center;">
+        <a href="https://jhkforecasts.com">
+            <img style="height: 5vw;margin-left: 20px;" src="https://jhkforecasts.com/LOGO-01.png">
+        </a>
     </div>
-    <div id="phoneTop">
-        <h1 style="font-family: sf-mono;">JHK FORECASTS</h1>
+    <div style="text-align: center;border-bottom: solid 1px black;height: 40px;" id="phoneTop">
+        <a href="https://jhkforecasts.com">
+            <h3 style="font-weight: 300;font-family:ibm-plex-mono;">JHK FORECASTS</h3>
+            <!--<img style="height: 100px;margin-left: 20px;" src="https://jhkforecasts.com/LOGO-01.png">!-->
+        </a>
     </div>
-    <div id="home">
-        <table style="border-collapse: collapse;">
-            <tbody>
-                <tr id="" width="100%">
-                    <td width="50%">
-                        <a href="https://projects.jhkforecasts.com/trends/"><img src="state-partisan-trends-01.svg" width="100%"></a>
-                    </td>
-                    <td width="50%" height="50%" valign="top">
-                        <a href="https://projects.jhkforecasts.com/trends;">
-                            <h1 style="font-size: 2.5vw; font-weight: 700;">State Partisan Trends</h1>
-                        </a>
-                    </td>
-                </tr>
-                <tr id="" width="100%">
-                    <td width="50%">
-                        <a href="https://projects.jhkforecasts.com/senate-forecast/georgia-senate-runoffs"><img src="https://projects.jhkforecasts.com/georgia-runoffs-01.svg" width="100%"></a>
-                    </td>
-                    <td width="50%" height="50%" valign="top">
-                        <a href="https://projects.jhkforecasts.com/senate-forecast/georgia-senate-runoffs">
-                            <h1 style="font-size: 2.5vw; font-weight: 700;">2021 Georgia Senate Runoffs</h1>
-                        </a>
-                    </td>
-                </tr>
-                <tr id="row0" width="100%">
-                    <td width="50%">
-                        <a href="https://projects.jhkforecasts.com/house-forecast/"><img src="2020-house-01.png" width="100%"></a>
-                    </td>
-                    <td width="50%" height="50%" valign="top">
-                        <a href="https://projects.jhkforecasts.com/house-forecast/">
-                            <h1 style="font-size: 2.5vw; font-weight: 700;">2020 House Forecast</h1>
-                        </a>
-                    </td>
-                </tr>
-                <tr id="row1" width="100%">
-                    <td width="50%">
-                        <a href="https://projects.jhkforecasts.com/senate-forecast/forecast-comparison"><img src="2020-senate-forecast-comparison-01.png" width="100%"></a>
-                    </td>
-                    <td width="50%" height="50%" valign="top">
-                        <a href="https://projects.jhkforecasts.com/senate-forecast/forecast-comparison">
-                            <h1 style="font-size: 2.5vw; font-weight: 700;">2020 Senate Forecast Comparison</h1>
-                        </a>
-                    </td>
-                </tr>
-                <tr id="row2" width="100%">
-                    <td width="50%">
-                        <a href="https://projects.jhkforecasts.com/senate-forecast/"><img src="senate-forecast-02.png" width="100%"></a>
-                    </td>
-                    <td width="50%" height="50%" valign="top">
-                        <a href="https://projects.jhkforecasts.com/senate-forecast/">
-                            <h1 style="font-size: 2.5vw; font-weight: 700;">2020 Senate Forecast</h1>
-                        </a>
-                    </td>
-                </tr>
-                <tr id="row3" width="100%">
-                    <td width="50%">
-                        <a href="https://projects.jhkforecasts.com/presidential-forecast/"><img src="Presidential-Forecast-02.png" width="100%"></a>
-                    </td>
-                    <td width="50%" height="50%" valign="top">
-                        <a href="https://projects.jhkforecasts.com/presidential-forecast/">
-                            <h1 style="font-size: 2.5vw; font-weight: 700;">2020 Presidential Forecast</h1>
-                        </a>
-                    </td>
-                </tr>
-                <tr id="row4" width="100%">
-                    <td width="50%">
-                        <a href="https://projects.jhkforecasts.com/democratic_primary/"><img src="democratic_primary-02.png" width="100%"></a>
-                    </td>
-                    <td width="50%" height="50%" valign="top">
-                        <a href="https://projects.jhkforecasts.com/democratic_primary/">
-                            <h1 style="font-size: 2.5vw; font-weight: 700;">2020 Democratic Primary</h1>
-                        </a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+    <div id="homeComputer"></div>
+    <div id="homePhone"></div>
+
+    <div style="border-top: black solid 1px;height: 75px;display: none;" id="footer">
+        <a href="https://jhkforecasts.com">
+            <p style="float: left;margin-top:25px;margin-left: 20px;font-family: ibm-plex-mono;">JHK FORECASTS</p>
+        </a>
+        <a href="https://twitter.com/jhkersting"><img style="height: 30px;margin-left: 20px;float: left;margin-top:25px ;" src="https://jhkforecasts.com/graphics/twitter-logo.png"></a>
     </div>
-    <div id="footer"></div>
 </body>
 
 </html>
