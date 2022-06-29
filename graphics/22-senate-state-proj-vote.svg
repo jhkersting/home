@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 1000 330" id="svg_1" version="1.1" xmlns="http://www.w3.org/2000/svg" xml:space="preserve">
+    <text id="main_dem" x="15" y="15" text-anchor="start" dominant-baseline="central" font-size="15" font-family="JetBrains Mono"
+          style="font-weight: 300;"></text>
+    <image href="https://jhkforecasts.com/graphics/DEM-01.svg" x="15" y="27.5" width="25"></image>
+    <image href="https://jhkforecasts.com/graphics/GOP-01.svg" x="960" y="27.5" width="25"></image>
+    <text id="dem_win" x="50" y="40" text-anchor="start" fill="rgb(51, 154, 255)" dominant-baseline="central" font-family="JetBrains Mono" font-size="25" style="font-weight: 600;"></text>
+    <text id="main_rep" x="985" y="15" text-anchor="end" dominant-baseline="central" font-size="15" font-family="JetBrains Mono"
+          style="font-weight: 300;"></text>
+    <text id="rep_win" x="950" y="40" text-anchor="end" fill="rgb(255, 102, 102)" dominant-baseline="central" font-family="JetBrains Mono" font-size="25" style="font-weight: 600;"></text>
+    <text y="10" x="500" fill="black" text-anchor="middle" dominant-baseline="central" font-size="15"
+          font-family="JetBrains Mono" style="font-weight: 300;">CHANCE OF AN UPSET IS ABOUT THE ODDS OF...</text>
+    <text id="upset_odds_text" y="30" x="500" fill="black" text-anchor="middle" dominant-baseline="central"
+          font-size="15" font-family="JetBrains Mono" style="font-weight: 500;"></text>
+    <rect x="940" y="125" width="5" height="20" fill="gray" opacity="0.20000000000000007"></rect>
+    <rect x="945" y="125" width="5" height="20" fill="gray" opacity="0.4"></rect>
+    <rect x="950" y="125" width="5" height="20" fill="gray" opacity="0.6000000000000001"></rect>
+    <rect x="955" y="125" width="5" height="20" fill="gray" opacity="0.8"></rect>
+    <rect x="960" y="125" width="5" height="20" fill="gray" opacity="1"></rect>
+    <rect x="965" y="125" width="5" height="20" fill="gray" opacity="1"></rect>
+    <rect x="970" y="125" width="5" height="20" fill="gray" opacity="0.8"></rect>
+    <rect x="975" y="125" width="5" height="20" fill="gray" opacity="0.6000000000000001"></rect>
+    <rect x="980" y="125" width="5" height="20" fill="gray" opacity="0.4"></rect>
+    <rect x="985" y="125" width="5" height="20" fill="gray" opacity="0.20000000000000007"></rect>
+    <line x1="965" x2="965" y1="125" y2="145" stroke="black"></line>
+    <text y="135" x="935" fill="black" text-anchor="end" dominant-baseline="central" font-size="10px" font-family="JetBrains Mono"
+          style="font-weight: 300;">80% CONFIDENCE</text>
+    <line x1="10" x2="990" y1="170" y2="170" stroke="grey"></line>
+    <text y="155" x="10" fill="black" text-anchor="start" dominant-baseline="central" font-size="15px" font-family="JetBrains Mono"
+          style="font-weight: 300;">CANDIDATE</text>
+    <text y="125" x="380" fill="black" text-anchor="end" dominant-baseline="central" font-size="12px" font-family="JetBrains Mono"
+          style="font-weight: 200;">LO</text>
+    <text y="140" x="380" fill="black" text-anchor="end" dominant-baseline="central" font-size="15px" font-family="JetBrains Mono"
+          style="font-weight: 400;">PROJ. VOTE</text>
+    <text y="155" x="380" fill="black" text-anchor="end" dominant-baseline="central" font-size="12px" font-family="JetBrains Mono" style="font-weight: 200;">HI</text>
+
+</svg>
