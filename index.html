@@ -11,7 +11,8 @@
     <meta name="twitter:description" content="" />
     <meta name="twitter:image" content="LOGO-01" />
     <title>JHK Forecasts</title>
-    <script data-ad-client="ca-pub-8025120308040073" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script data-ad-client="ca-pub-8025120308040073" async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140782021-2"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -23,72 +24,94 @@
 
         gtag('config', 'UA-140782021-2');
     </script>
+    <link rel="stylesheet" href="https://projects.jhkforecasts.com/presidential-forecast/index.css">
+
     <style>
-        td {
-            border-bottom: lightgray solid 1pt;
+        p {
+            font-family: "JetBrains Mono";
         }
-        
+        p{
+            vertical-align:middle;
+        }
+
         #computerTop {
             border-bottom: 1px black solid;
         }
-        
+
         #phoneTop {
             border-bottom: 1px black solid;
             text-align: center;
         }
-        
+
         @media only screen and (max-width:750px) {
             #homeComputer {
                 display: none;
             }
+
             #computerTop {
                 display: none;
             }
+
             #phoneTop {
                 display: block;
             }
+
             #phonePhone {
                 display: block;
             }
+            #footer {
+                display: none;
+            }
+            #footer_p{
+                display: block;
+            }
         }
-        
+
         @media only screen and (min-width:750px) {
             #homeComputer {
                 width: 80%;
                 margin-left: 10%;
                 display: block;
             }
+
             #computerTop {
                 display: block;
             }
+            #footer {
+                display: block;
+            }
+
             #phoneTop {
                 display: none;
             }
+
             #homePhone {
                 display: none;
             }
+            #footer_p {
+                display: none;
+            }
         }
-        
+
         #computerTop {
             position: fixed;
             top: 0;
             width: 100%;
             background-color: white;
         }
-        
+
         #homeComputer {
             margin-top: 5vw;
         }
     </style>
     <link rel="icon" href="https://jhkforecasts.com/LOGO-01.png">
-    <script src="https://raw.githubusercontent.com/GoogleChrome/lighthouse/master/lighthouse-core/audits/font-display.js"></script>
-    <script src="https://raw.githubusercontent.com/GoogleChrome/lighthouse/master/lighthouse-core/audits/byte-efficiency/offscreen-images.js"></script>
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <script src="//d3js.org/queue.v1.min.js"></script>
     <link rel="stylesheet" href="https://use.typekit.net/htk2wjy.css">
-    <link rel="stylesheet" href="https://projects.jhkforecasts.com/presidential-forecast/index.css">
     <script src="home.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 </head>
 
@@ -108,11 +131,90 @@
     <div id="homeComputer"></div>
     <div id="homePhone"></div>
 
-    <div style="border-top: black solid 1px;height: 75px;display: none;" id="footer">
-        <a href="https://jhkforecasts.com">
-            <p style="float: left;margin-top:25px;margin-left: 20px;font-family: JetBrains Mono;">JHK FORECASTS</p>
-        </a>
-        <a href="https://twitter.com/jhkersting"><img style="height: 30px;margin-left: 20px;float: left;margin-top:25px ;" src="https://jhkforecasts.com/graphics/twitter-logo.png"></a>
+    <div style="border-top: black solid 1px;height: 75px;bottom: 0;position: sticky;background-color: white;"
+        id="footer">
+        <table style="width: 100%;height: 75px;">
+            <tr style="width: 100%;">
+                <td style="width: 10%;">
+                    <p id="dem_win_senate" style="text-align: right;"></p>
+                </td>
+                <td style="width: 2%;text-align: center;">
+                    <img src="graphics/DEM-01.svg">
+                </td>
+                <td style="width: 10%;">
+                    <a href="https://projects.jhkforecasts.com/2022-midterms/senate-forecast/">
+                        <p style="text-align: center;">Senate</p>
+                    </a>
+                </td>
+                <td style="width: 2%;text-align: center;">
+                    <img src="graphics/REP-01.svg">
+                </td>
+                <td style="width: 10%;">
+                    <p id="rep_win_senate" style="text-align: left;"></p>
+                </td>
+                <td style="width: 10%;">
+                    <p id="dem_win_house" style="text-align: right;"></p>
+                </td>
+                <td style="width: 2%;text-align: center;">
+                    <img src="graphics/DEM-01.svg">
+                </td>
+                <td style="width: 10%;">
+                    <a href="https://projects.jhkforecasts.com/2022-midterms/house-forecast/">
+                        <p style="text-align: center;">House</p>
+                    </a>
+                </td>
+                <td style="width: 2%;text-align: center;">
+                    <img src="graphics/REP-01.svg">
+                </td>
+                <td style="width: 10%;">
+                    <p id="rep_win_house" style="text-align: left;"></p>
+                </td>
+
+            </tr>
+        </table>
+    </div>
+
+    <div style="border-top: black solid 1px;height: 75px;bottom: 0;position: sticky;background-color: white;width: 105%;margin-left: -8px;"
+        id="footer_p">
+        <table style="width: 100%;height: 75px;">
+            <tr style="width: 100%;">
+                <td style="width: 10%;">
+                    <p id="dem_win_senate_p" style="text-align: right;"></p>
+                </td>
+                <td style="width: 2%;text-align: center;">
+                    <img style="height: 20px;" src="graphics/DEM-01.svg">
+                </td>
+                <td style="width: 5%;">
+                    <a href="https://projects.jhkforecasts.com/2022-midterms/senate-forecast/">
+                        <p style="text-align: center;">S</p>
+                    </a>
+                </td>
+                <td style="width: 2%;text-align: center;">
+                    <img style="height: 20px;" src="graphics/REP-01.svg">
+                </td>
+                <td style="width: 10%;">
+                    <p id="rep_win_senate_p" style="text-align: left;"></p>
+                </td>
+                <td style="width: 10%;">
+                    <p id="dem_win_house_p" style="text-align: right;"></p>
+                </td>
+                <td style="width: 2%;text-align: center;">
+                    <img style="height: 20px;" src="graphics/DEM-01.svg">
+                </td>
+                <td style="width: 5%;">
+                    <a href="https://projects.jhkforecasts.com/2022-midterms/house-forecast/">
+                        <p style="text-align: center;">H</p>
+                    </a>
+                </td>
+                <td style="width: 2%;text-align: center;">
+                    <img style="height: 20px;"src="graphics/REP-01.svg">
+                </td>
+                <td style="width: 10%;">
+                    <p id="rep_win_house_p" style="text-align: left;"></p>
+                </td>
+
+            </tr>
+        </table>
     </div>
 </body>
 

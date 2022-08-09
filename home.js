@@ -1,10 +1,27 @@
 var nf = d3.format(".1f")
+var zf = d3.format(".0f")
 queue()
     .defer(d3.csv, "links.csv")
+    .defer(d3.csv,"https://data.jhkforecasts.com/2022-house/today-output.csv")
+    .defer(d3.csv,"https://data.jhkforecasts.com/2022-senate/today-output.csv")
     .await(ready);
 
-function ready(error, photos) {
+function ready(error, photos,house,senate) {
 
+    senate = senate.pop()
+    house = house.pop()
+
+    console.log(senate)
+
+    $("#dem_win_senate").text(nf(senate.dem_win)+"%")
+    $("#rep_win_senate").text(nf(senate.rep_win)+"%")
+    $("#dem_win_house").text(nf(house.dem_win)+"%")
+    $("#rep_win_house").text(nf(house.rep_win)+"%")
+
+    $("#dem_win_senate_p").text(zf(senate.dem_win)+"%")
+    $("#rep_win_senate_p").text(zf(senate.rep_win)+"%")
+    $("#dem_win_house_p").text(zf(house.dem_win)+"%")
+    $("#rep_win_house_p").text(zf(house.rep_win)+"%")
 
     var home = d3.select("#homeComputer")
 
@@ -34,6 +51,5 @@ function ready(error, photos) {
         .style("border-radius", "20px")
         .style("margin-top", "10px")
 
-    d3.select("#footer").style("display", "block")
 
 }
