@@ -34,8 +34,8 @@ function ready(error, photos,house,senate) {
         .attr("src", d => d.photo_src + "-01.svg")
         .style("width", "100%")
         .style("border", "black solid 1px")
-        .style("border-radius", "20px")
-        .style("margin-top", "10px")
+        .style("border-radius", "10px")
+        .style("margin-top", "5px")
 
     var homePhone = d3.select("#homePhone")
 
