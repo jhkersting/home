@@ -34,10 +34,17 @@
             vertical-align:middle;
         }
 
-        #computerTop {
-            border-bottom: 1px black solid;
+        #computer_banner {
+            height: 65px;
+            top: 0;
+            position: fixed;
+            width: 100%;
+            background-color: white;
+            margin-right: -8px;
+            margin-left: -8px;
+            align-items: middle;
+            border-bottom: black solid 1px;
         }
-
         #phoneTop {
             border-bottom: 1px black solid;
             text-align: center;
@@ -48,7 +55,7 @@
                 display: none;
             }
 
-            #computerTop {
+            #computer_banner {
                 display: none;
             }
 
@@ -74,7 +81,7 @@
                 display: block;
             }
 
-            #computerTop {
+            #computer_banner {
                 display: block;
             }
             #footer {
@@ -91,13 +98,6 @@
             #footer_p {
                 display: none;
             }
-        }
-
-        #computerTop {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background-color: white;
         }
 
         #homeComputer {
@@ -117,10 +117,12 @@
 
 <body>
 
-    <div id="computerTop" style="height: 5vw;border-bottom: black solid 1px;align-items: center;">
+    <div id="computer_banner" style="z-index: 1000;">
         <a href="https://jhkforecasts.com">
-            <img style="height: 5vw;margin-left: 20px;" src="https://jhkforecasts.com/LOGO-01.png">
+            <img style="height: 65px;margin-left: 20px;float: left" src="https://jhkforecasts.com/LOGO-01.png">
         </a>
+
+        <a href="https://projects.jhkforecasts.com/interactives/billy-strings/"><p style="float: right;margin-right:20px;font-size: 15px;font-weight: 600;margin-top: 25px;text-decoration: solid underline;">Billy Strings Setlist Forecast</p></a>
     </div>
     <div style="text-align: center;border-bottom: solid 1px black;height: 40px;" id="phoneTop">
         <a href="https://jhkforecasts.com">
@@ -129,9 +131,10 @@
         </a>
     </div>
     <div id="homeComputer"></div>
+    <a class="phone" href="https://projects.jhkforecasts.com/interactives/billy-strings/"><p style="text-align: center;font-size: 15px;font-weight: 600;margin-top: 25px;text-decoration: solid underline;">Billy Strings Setlist Forecast</p></a>
     <div id="homePhone"></div>
 
-    <div style="border-top: black solid 1px;height: 75px;bottom: 0;position: sticky;background-color: white;display:none"
+   <!-- <div style="border-top: black solid 1px;height: 75px;bottom: 0;position: sticky;background-color: white;display:none"
         id="footer">
         <table style="width: 100%;height: 75px;">
             <tr style="width: 100%;">
@@ -215,7 +218,7 @@
 
             </tr>
         </table>
-    </div>
+    </div>-->
 </body>
 
 </html>
