@@ -66,9 +66,9 @@ function ready(error, photos,pres_polling) {
     .style("width", "100%")
     const row2 = table.append("tr")
 
-    averages.forEach(d => {
+    averages.forEach((d,i) => {
         abbrev = abbrevs[states.indexOf(d.state)]
-        url_link = d.state.split(" ").join("-").toLowerCase()
+        d.url_link = d.state.split(" ").join("-").toLowerCase()
         row.append("td")
             .style("border-left", "black solid 1px")
             .style("border-right", "black solid 1px")
@@ -80,7 +80,7 @@ function ready(error, photos,pres_polling) {
             .style("padding", "0px")
             .style("margin", "0px")
             .on("click", () => {
-                window.location.href = "https://projects.jhkforecasts.com/2024/president/polling.html#" + url_link
+                window.location.href = "https://projects.jhkforecasts.com/2024/president/polling.html#" + d.url_link
             })
             .style("cursor", "pointer")
             .append('p')
